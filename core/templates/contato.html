@@ -1,0 +1,39 @@
+<!-- Carregando módulo do bootstrap4 que foi instalado de forma integrada ao django -->
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+
+    <!-- Carregando css do bootstrap -->
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h1>Contato</h1>
+        {% bootstrap_messages %}
+
+        <!-- Formulário abaixo quando usuário clicar no botão: -->
+        <!-- Ação: vai enviar os dados pra rota contato/ definida nas views.py, onde vai ser tratada -->
+        <!-- Método: post, porque é um envio de dados -->
+        <!-- Classe 'form' do bootstrap -->
+        <!-- Autocomplete off, pra deixar o usuário livre de interrupção ou sugestão -->
+        <form action="{% url 'contato' %}" method="post" class="form" autocomplete="off">
+            <!-- Recurso de validação se segurança de formulário do django -->
+            {% csrf_token %}
+
+            <!-- Aplicar css no formulário, cujo nome é o mesmo nome definido na variável da view.py -->
+            {% bootstrap_form formulario %}
+
+            <!-- Criando botão -->
+            {% buttons %}
+                <button type="submit" class="btn btn-primary"> Enviar mensagem </button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+    <!-- Carregando javascript do bootstrap -->
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

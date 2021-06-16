@@ -1,0 +1,26 @@
+{% load bootstrap4 %} <!-- carregando bootstrap4 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Produto</title>
+    {% bootstrap_css %} <!-- linkando css -->
+</head>
+<body>
+    <div class="container">
+        <h1> Produto </h1>
+        {% bootstrap_messages %} <!-- mensagem de sucesso ou erro após envio -->
+
+        <!-- enctype="multipart/form-data": lida com o upload do arquivo de imagem do formulário -->
+        <form action="{% url 'produto' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %} <!-- segurança do django -->
+            {% bootstrap_form formulario %} <!-- aplicando estilo ao formulário -->
+            {% buttons %} <!-- botão estilizado -->
+                <button type="submit" class="btn btn-primary"> Cadastrar </button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+    {% bootstrap_javascript jquery='full' %} <!-- link javascript -->
+</body>
+</html>
