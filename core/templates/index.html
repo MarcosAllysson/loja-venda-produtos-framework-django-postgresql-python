@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="container">
+        <!-- Verificação se há produtos cadastrados -->
+        {% if produtos %}
+
         <h1> Produtos </h1>
 
         <!-- Apresentando os dados com tabela estilisada -->
@@ -51,9 +54,17 @@
                             </div>
                         </div>
                     </div>
+                <!-- End for -->
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- Se não tiver produtos cadastrados, apesar exibir mensagem -->
+        {% else %}
+            <h2> Não há produtos cadastrados ainda :( </h2>
+
+        <!-- End if -->
+        {% endif %}
     </div>
 
     {% bootstrap_javascript jquery='full' %}
